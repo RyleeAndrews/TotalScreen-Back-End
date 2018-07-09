@@ -6,7 +6,7 @@ const bcrypt = require('bluebird').promisifyAll(require('bcrypt'));
 const aws = require('../lib/middleware/s3.js');
 
 const userSchema = new mongoose.Schema({
-  emails: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
   password: {type: String, required: true, unique: true},
 });
 
