@@ -8,6 +8,10 @@ const aws = require('../lib/middleware/s3.js');
 const userSchema = new mongoose.Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true, unique: true},
+  firstname: {type: String, required: false},
+  lastname: {type: String, required: false},
+  avatar: {type: String, required: false},
+  avatarFile: {type: String},
 });
 
 userSchema.methods.attachFiles = function(files){

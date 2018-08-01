@@ -1,3 +1,4 @@
+
 'use strict';
 
 const User = require('../models/user.js');
@@ -32,7 +33,7 @@ authRouter.post('/auth/create', jsonParser, (req, res, next) => {
 
 authRouter.get('/auth/login', basicHTTP, (req, res, next) => {
 
-  User.findOne({username: req.auth.username})
+  User.findOne({email: req.auth.email})
 
     .then(user => {
 
@@ -71,7 +72,7 @@ authRouter.get('/auth/validate', bearerAuth, (req, res, next) => {
 authRouter.put('/auth/:id', bodyParser, bearerAuth, (req,res,next) => {
   let id = req.params.id;
 
-  console.log(req.files);
+  console.log('hit',req.params.id);
 
   User.findOne({_id:id})
     .then( result => {
