@@ -33,14 +33,14 @@ authRouter.post('/auth/create', jsonParser, (req, res, next) => {
 
 authRouter.get('/auth/login', basicHTTP, (req, res, next) => {
 
-  User.findOne({email: req.auth.email})
+  User.findOne({username: req.auth.username})
 
     .then(user => {
 
       if (!user) {
         next({statusCode: 403, message: 'Invalid Username'});
       }
-
+      console.log(User._id);
       user.comparePassword(req.auth.password)
         .then( user => {
           let token = user.generateToken();
