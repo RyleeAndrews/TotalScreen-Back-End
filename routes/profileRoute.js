@@ -19,3 +19,47 @@ profileRouter.post('/postprofile', jsonParser, (req,res,next) => {
     next(error.message);
   }
 });
+
+profileRouter.get('/:model', (req,res,next) => {
+  try {
+
+
+    Profile.find({})
+      .then( result => res.send(result))
+      .catch(err => next(err));
+  }
+  catch(error){
+    next(error.message);
+  }
+});
+
+profileRouter.get('/:id', (req,res,next) => {
+  try {
+    let id = req.params.id;
+    Profile.findOne({_id: id})
+      .then( result => res.send(result))
+      .catch(err => next(err));
+  }
+  catch(error){
+    next(error.message);
+  }
+});
+
+profileRouter.put('/:id', bodyParser, (req,res,next) => {
+  try{
+
+    let id = req.params.id;
+
+    console.log(id);
+    Profile.findOne({_id:id})
+      .then( result => {
+        Object.assign(result, req.body);
+        return result.save();
+      })
+      .then(result => res.send(result))
+      .catch(err => next(err));
+  }
+  catch(error){
+    next(error.message);
+  }
+});
