@@ -15,6 +15,7 @@ const ordersSchema = new mongoose.Schema({
   color: {type: String, required: false},
   placement: {type: String, required: true},
   inkColor: {type: String, required: true},
+  _id: {type: mongoose.Schema.Types.ObjectId, auto: true},
 });
 
 const Order = module.exports = mongoose.model('Order', ordersSchema);

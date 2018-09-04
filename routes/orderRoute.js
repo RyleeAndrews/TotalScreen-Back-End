@@ -18,3 +18,28 @@ ordersRouter.post('/postorder', bodyParser, ( req, res, next ) => {
     next(error.message);
   }
 });
+
+ordersRouter.get('/:model', (req,res,next) => {
+  try {
+
+
+    Order.find({})
+      .then( result => res.send(result))
+      .catch(err => next(err));
+  }
+  catch(error){
+    next(error.message);
+  }
+});
+
+ordersRouter.get('/:id', (req,res,next) => {
+  try {
+    let id = req.params.id;
+    Order.findOne({_id: id})
+      .then( result => res.send(result))
+      .catch(err => next(err));
+  }
+  catch(error){
+    next(error.message);
+  }
+});
