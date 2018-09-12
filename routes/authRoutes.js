@@ -69,7 +69,7 @@ authRouter.get('/auth/validate', bearerAuth, (req, res, next) => {
     .catch(next);
 });
 
-authRouter.put('/auth/:id', bodyParser, bearerAuth, (req,res,next) => {
+authRouter.put('/auth/:id', jsonParser, bearerAuth, (req,res,next) => {
   let id = req.params.id;
 
   console.log('hit',req.params.id);

@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true, unique: true},
   username: {type: String, required: true, unique: true},
+  _id: {type: mongoose.Schema.Types.ObjectId, auto: true},
 });
 
 userSchema.methods.attachFiles = function(files){
