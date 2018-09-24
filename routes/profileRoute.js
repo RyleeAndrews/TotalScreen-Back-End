@@ -3,6 +3,8 @@
 const Profile = require('../models/profile.js');
 const bodyParser = require('../lib/middleware/bodyParser.js');
 const jsonParser = require('body-parser').json();
+const bearerAuth = require('../lib/middleware/bearAuth.js');
+const getProfileById = require('../lib/middleware/authMiddleware.js');
 const profileRouter = module.exports = require('express').Router();
 
 profileRouter.post('/postprofile', jsonParser, (req,res,next) => {
@@ -20,7 +22,7 @@ profileRouter.post('/postprofile', jsonParser, (req,res,next) => {
   }
 });
 
-profileRouter.get('/:model', (req,res,next) => {
+profileRouter.get('/profile/:model', (req,res,next) => {
   try {
 
 
@@ -33,7 +35,7 @@ profileRouter.get('/:model', (req,res,next) => {
   }
 });
 
-profileRouter.get('/:id', (req,res,next) => {
+profileRouter.get('/profile/:id', (req,res,next) => {
   try {
     let id = req.params.id;
     Profile.findOne({_id: id})

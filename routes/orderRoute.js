@@ -19,7 +19,7 @@ ordersRouter.post('/postorder', bodyParser, ( req, res, next ) => {
   }
 });
 
-ordersRouter.get('/:model', (req,res,next) => {
+ordersRouter.get('/orders/:model', (req,res,next) => {
   try {
 
 
@@ -32,7 +32,7 @@ ordersRouter.get('/:model', (req,res,next) => {
   }
 });
 
-ordersRouter.get('/:id', (req,res,next) => {
+ordersRouter.get('/orders/:id', (req,res,next) => {
   try {
     let id = req.params.id;
     Order.findOne({_id: id})
